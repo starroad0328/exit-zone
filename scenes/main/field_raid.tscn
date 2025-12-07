@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://fieldraid001"]
+[gd_scene load_steps=9 format=4 uid="uid://fieldraid001"]
 
 [ext_resource type="PackedScene" uid="uid://player001" path="res://scenes/entities/player.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://scav001" path="res://scenes/entities/scav.tscn" id="2"]
@@ -9,28 +9,30 @@
 [ext_resource type="Script" uid="uid://c0exlujow7ygw" path="res://scripts/main/field_raid.gd" id="7"]
 
 [sub_resource type="RectangleShape2D" id="boundary"]
-size = Vector2(2000, 50)
+size = Vector2(4000, 50)
 
 [node name="FieldRaid" type="Node2D"]
 script = ExtResource("7")
 
 [node name="Background" type="ColorRect" parent="."]
-offset_left = -1800.0
-offset_top = -700.0
-offset_right = 1800.0
-offset_bottom = 700.0
+offset_left = -2000.0
+offset_top = -1500.0
+offset_right = 2000.0
+offset_bottom = 1500.0
 color = Color(0.82, 0.75, 0.55, 1)
 
 [node name="GroundLayer" type="TileMapLayer" parent="."]
 scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AADn/+z/AAAFAAUAAADo/+z/AAAGAAUAAADp/+z/AAAGAAUAAADq/+z/AAAGAAUAAADr/+z/AAAGAAUAAADs/+z/AAAGAAUAAADt/+z/AAAGAAUAAADu/+z/AAAGAAUAAADv/+z/AAAGAAUAAADw/+z/AAAGAAUAAADx/+z/AAAGAAUAAADy/+z/AAAGAAUAAADz/+z/AAAGAAUAAAD0/+z/AAAGAAUAAAD1/+z/AAAGAAUAAADn/+3/AAAFAAYAAADn/+7/AAAFAAcAAADo/+7/AAAGAAcAAADp/+7/AAAGAAcAAADq/+7/AAAJAAUAAADq/+//AAAFAAYAAADq//D/AAAFAAcAAADr//D/AAAGAAcAAADs//D/AAAGAAcAAADt//D/AAAGAAcAAADu//D/AAAGAAcAAADv//D/AAAGAAcAAADw//D/AAAGAAcAAADx//D/AAAGAAcAAADy//D/AAAGAAcAAADz//D/AAAGAAcAAAD0//D/AAAGAAcAAAD1//D/AAAGAAcAAAD2//D/AAAGAAcAAAD3//D/AAAGAAcAAAD4//D/AAAHAAcAAAD4/+//AAAHAAUAAAD3/+//AAAIAAYAAAD2/+//AAAGAAYAAAD1/+//AAAGAAYAAAD0/+//AAAGAAYAAADz/+//AAAGAAYAAADy/+//AAAGAAYAAADx/+//AAAGAAYAAADw/+//AAAGAAYAAADv/+//AAAGAAYAAADu/+//AAAGAAYAAADt/+//AAAGAAYAAADs/+//AAAGAAYAAADr/+//AAAGAAYAAADr/+7/AAAGAAYAAADr/+3/AAAGAAYAAADq/+3/AAAGAAYAAADp/+3/AAAGAAYAAADo/+3/AAAGAAYAAADs/+3/AAAGAAYAAADs/+7/AAAGAAYAAADt/+3/AAAGAAYAAADu/+3/AAAGAAYAAADu/+7/AAAGAAYAAADv/+3/AAAGAAYAAADw/+3/AAAGAAYAAADw/+7/AAAGAAYAAADv/+7/AAAGAAYAAADt/+7/AAAGAAYAAADx/+3/AAAGAAYAAADy/+3/AAAGAAYAAADy/+7/AAAGAAYAAADx/+7/AAAGAAYAAADz/+3/AAAGAAYAAADz/+7/AAAGAAYAAAD0/+7/AAAGAAYAAAD0/+3/AAAGAAYAAAD1/+3/AAAGAAYAAAD1/+7/AAAGAAYAAAD2/+3/AAAIAAYAAAD2/+7/AAAGAAYAAAD3/+3/AAAHAAUAAAD3/+7/AAAHAAYAAAD2/+z/AAAHAAUAAAA=")
 tile_set = ExtResource("6")
 
 [node name="ObjectLayer" type="TileMapLayer" parent="."]
 scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AADx/+z/AAAIAAMAAADx/+3/AAAIAAQAAAD0/+3/AAAIAAMAAAD0/+7/AAAIAAQAAADo/+v/AAAIAAMAAADo/+z/AAAIAAQAAADr/+7/AAAIAAMAAADr/+//AAAIAAQAAADt/+z/AAAIAAMAAADt/+3/AAAIAAQAAADo/+3/AAAIAAIAAADt/+7/AAAIAAIAAADv/+7/AAAIAAIAAADv/+3/AAAIAAIAAADz/+//AAAIAAIAAADy/+//AAAIAAIAAAD1/+3/AAAIAAIAAAD2/+7/AAAIAAIAAAD3/+//AAAIAAIAAADu/+//AAAIAAIAAAA=")
 tile_set = ExtResource("6")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1")]
-position = Vector2(-300, 0)
+position = Vector2(-1341, -1204)
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -65,20 +67,20 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="Top" type="CollisionShape2D" parent="Boundaries"]
-position = Vector2(0, -700)
+position = Vector2(0, -1500)
 shape = SubResource("boundary")
 
 [node name="Bottom" type="CollisionShape2D" parent="Boundaries"]
-position = Vector2(0, 700)
+position = Vector2(0, 1500)
 shape = SubResource("boundary")
 
 [node name="Left" type="CollisionShape2D" parent="Boundaries"]
-position = Vector2(-1800, 0)
+position = Vector2(-2000, 0)
 rotation = 1.5708
 shape = SubResource("boundary")
 
 [node name="Right" type="CollisionShape2D" parent="Boundaries"]
-position = Vector2(1800, 0)
+position = Vector2(2000, 0)
 rotation = 1.5708
 shape = SubResource("boundary")
 
@@ -124,6 +126,89 @@ offset_top = 95.0
 offset_right = 220.0
 offset_bottom = 118.0
 text = "붕대: 0 [Q]"
+
+[node name="StaminaBar" type="ProgressBar" parent="HUD/HUDControl"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 120.0
+offset_right = 220.0
+offset_bottom = 135.0
+value = 100.0
+show_percentage = false
+
+[node name="EnergyLabel" type="Label" parent="HUD/HUDControl"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 140.0
+offset_right = 220.0
+offset_bottom = 163.0
+text = "에너지: 0 [E]"
+
+[node name="TimerLabel" type="Label" parent="HUD/HUDControl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 20.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+text = "3:00"
+horizontal_alignment = 1
+
+[node name="TrialWarning" type="Label" parent="HUD/HUDControl"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 60.0
+offset_right = 150.0
+offset_bottom = 90.0
+grow_horizontal = 2
+text = "!! TRIAL PHASE 1 !!"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="HUD/HUDControl"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -150.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 43.0
+grow_horizontal = 0
+text = "Lv.1"
+horizontal_alignment = 2
+
+[node name="XPBar" type="ProgressBar" parent="HUD/HUDControl"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -150.0
+offset_top = 45.0
+offset_right = -20.0
+offset_bottom = 60.0
+grow_horizontal = 0
+value = 50.0
+show_percentage = false
+
+[node name="KillsLabel" type="Label" parent="HUD/HUDControl"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -150.0
+offset_top = 65.0
+offset_right = -20.0
+offset_bottom = 88.0
+grow_horizontal = 0
+text = "Kills: 0"
+horizontal_alignment = 2
 
 [node name="ExtractionBar" type="ProgressBar" parent="HUD/HUDControl"]
 layout_mode = 1
