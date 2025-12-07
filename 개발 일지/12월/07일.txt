@@ -1,0 +1,122 @@
+===========================================
+EXIT ZONE 개발 일지 - 2024년 12월 7일
+===========================================
+
+[ 오늘 작업 내용 ]
+
+1. 프로젝트 초기 설정
+   - Godot 4.5 프로젝트 생성
+   - 폴더 구조 생성 (scenes, scripts, resources, assets)
+   - project.godot 설정 (입력 매핑, 오토로드, 물리 레이어)
+
+2. 오토로드 스크립트
+   - GameState.gd: 게임 상태 관리, 씬 전환
+   - InventoryManager.gd: 인벤토리, 스태시 관리
+
+3. 플레이어 시스템
+   - player.gd / player.tscn
+   - 이동 (WASD), 마우스 조준, 사격 (LMB)
+   - 재장전 (R), 상호작용 (F), 회복 (Q)
+
+4. 무기 시스템
+   - WeaponData 리소스 클래스
+   - 3종 무기 리소스 생성:
+     * P1 Sidearm (권총)
+     * SMG-Alpha
+     * AR-15 Ranger
+   - Projectile (탄환) 구현
+
+5. 적 시스템
+   - Scav AI 구현 (scav.gd / scav.tscn)
+   - 상태: 패트롤 → 추격 → 공격
+   - 기본형 / 강화형 구분
+
+6. 루팅 시스템
+   - LootBox (상자) 구현
+   - ExtractionZone (추출 지점) 구현 - F키 2초 홀드
+
+7. 씬 구성
+   - menu.tscn: 메인 메뉴
+   - field_raid.tscn: 1단계 필드 레이드 (사막)
+   - defense_raid.tscn: 2단계 디펜스 레이드 (던전)
+   - result_screen.tscn: 결과 화면
+
+8. HUD/UI
+   - HP바, 탄약 표시, 붕대 개수
+   - 추출 진행바, 웨이브 표시
+
+9. Kenney 에셋 적용
+   - Desert Shooter Pack (필드 레이드)
+   - Tiny Dungeon (디펜스 레이드)
+   - 플레이어, 적, 무기, 탄환, 상자에 텍스처 적용
+   - 타일셋 리소스 생성 (desert_tileset.tres, dungeon_tileset.tres)
+
+10. 필드 레이드 맵 디자인 시작
+    - TileMapLayer로 타일 페인팅 진행 중
+
+
+[ 다음에 할 것 ]
+
+- 타일맵 간격 문제 해결 (tilemap_packed.png 사용 또는 Separation 설정)
+- 필드 레이드 맵 디자인 완성
+- 디펜스 레이드 맵 디자인
+- 게임 테스트 및 버그 수정
+- 사운드 추가 (선택)
+
+
+[ 파일 목록 ]
+
+scenes/
+├── main/
+│   ├── menu.tscn
+│   ├── field_raid.tscn
+│   ├── defense_raid.tscn
+│   └── result_screen.tscn
+├── entities/
+│   ├── player.tscn
+│   ├── scav.tscn
+│   ├── projectile.tscn
+│   ├── loot_box.tscn
+│   └── extraction_zone.tscn
+
+scripts/
+├── autoload/
+│   ├── game_state.gd
+│   └── inventory_manager.gd
+├── player/
+│   └── player.gd
+├── enemies/
+│   └── scav.gd
+├── weapons/
+│   ├── weapon_data.gd
+│   └── projectile.gd
+├── items/
+│   ├── loot_box.gd
+│   └── extraction_zone.gd
+├── ui/
+│   ├── menu.gd
+│   ├── hud.gd
+│   └── result_screen.gd
+├── main/
+│   └── defense_raid.gd
+
+resources/
+├── weapons/
+│   ├── p1_sidearm.tres
+│   ├── smg_alpha.tres
+│   └── ar15_ranger.tres
+├── tilesets/
+│   ├── desert_tileset.tres
+│   └── dungeon_tileset.tres
+
+
+[ 조작법 ]
+
+WASD - 이동
+마우스 - 조준
+LMB - 사격
+R - 재장전
+F - 상호작용 / 추출
+Q - 붕대 사용
+
+===========================================

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/weapon_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_id = "ar15_ranger"
+weapon_name = "AR-15 Ranger"
+damage = 16
+fire_rate = 6.0
+magazine_size = 30
+reload_time = 1.8
+ammo_type = "556"
+projectile_speed = 900.0
+spread = 0.03
