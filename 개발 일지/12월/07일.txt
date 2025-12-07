@@ -54,11 +54,31 @@ EXIT ZONE 개발 일지 - 2024년 12월 7일
 10. 필드 레이드 맵 디자인 시작
     - TileMapLayer로 타일 페인팅 진행 중
 
+11. MVP 시스템 대규모 업데이트 ★
+    - 기지 시스템 추가 (base.tscn)
+      * 퀘스트 패널 (quest_panel.gd)
+      * 제작 패널 (craft_panel.gd)
+      * 스태시 패널 (stash_panel.gd)
+      * 로드아웃 패널 (loadout_panel.gd)
+    - 플레이어 스테미나/스프린트/회피 시스템
+      * Shift - 스프린트
+      * Space - 회피 (무적 프레임)
+    - 필드 레이드 시간제한 + 시련(TRIAL) 시스템
+      * 3분 제한시간
+      * 시간 초과 시 TRIAL 페이즈 시작 (강화 적 스폰)
+    - 레벨/경험치/저장 시스템
+      * JSON 기반 세이브/로드
+      * 레벨업 시 제작법 해금
+    - 재료 드롭 및 제작 시스템
+      * 재료: scrap_metal, gun_parts, cloth, chemicals
+      * 무기/소모품 제작
+    - HUD 업데이트 (타이머, 시련 경고, 레벨/XP 표시)
+    - 맵 생성기를 에디터 기반 타일 페인팅으로 전환
+
 
 [ 다음에 할 것 ]
 
-- 타일맵 간격 문제 해결 (tilemap_packed.png 사용 또는 Separation 설정)
-- 필드 레이드 맵 디자인 완성
+- 필드 레이드 맵 디자인 완성 (에디터에서 직접 타일 배치)
 - 디펜스 레이드 맵 디자인
 - 게임 테스트 및 버그 수정
 - 사운드 추가 (선택)
@@ -69,6 +89,7 @@ EXIT ZONE 개발 일지 - 2024년 12월 7일
 scenes/
 ├── main/
 │   ├── menu.tscn
+│   ├── base.tscn          ★ NEW
 │   ├── field_raid.tscn
 │   ├── defense_raid.tscn
 │   └── result_screen.tscn
@@ -81,23 +102,30 @@ scenes/
 
 scripts/
 ├── autoload/
-│   ├── game_state.gd
-│   └── inventory_manager.gd
+│   ├── game_state.gd      (레벨/퀘스트/제작법/세이브 추가)
+│   └── inventory_manager.gd (재료/제작 추가)
 ├── player/
-│   └── player.gd
+│   └── player.gd          (스테미나/회피 추가)
 ├── enemies/
 │   └── scav.gd
 ├── weapons/
 │   ├── weapon_data.gd
 │   └── projectile.gd
 ├── items/
-│   ├── loot_box.gd
+│   ├── loot_box.gd        (재료 드롭 추가)
 │   └── extraction_zone.gd
 ├── ui/
 │   ├── menu.gd
-│   ├── hud.gd
-│   └── result_screen.gd
+│   ├── hud.gd             (타이머/시련/레벨 표시 추가)
+│   ├── result_screen.gd
+│   ├── quest_panel.gd     ★ NEW
+│   ├── craft_panel.gd     ★ NEW
+│   ├── stash_panel.gd     ★ NEW
+│   └── loadout_panel.gd   ★ NEW
 ├── main/
+│   ├── base.gd            ★ NEW
+│   ├── field_raid.gd      (시간제한/TRIAL 추가)
+│   ├── field_map_generator.gd
 │   └── defense_raid.gd
 
 resources/
@@ -109,14 +137,21 @@ resources/
 │   ├── desert_tileset.tres
 │   └── dungeon_tileset.tres
 
+docs/
+├── MVP_SPEC.md            ★ NEW
+└── DEV_NOTES.md           ★ NEW
+
 
 [ 조작법 ]
 
 WASD - 이동
+Shift - 스프린트
+Space - 회피 (무적)
 마우스 - 조준
 LMB - 사격
 R - 재장전
 F - 상호작용 / 추출
 Q - 붕대 사용
+E - 에너지 드링크 사용
 
 ===========================================
